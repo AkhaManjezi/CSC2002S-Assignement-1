@@ -1,5 +1,16 @@
 <resources>
-    <string name="app_name">Assignment 1</string>
+    <string name="app_name">Kilojoule Counter</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_entry">EntryActivity</string>
+    <string name="breakfastName">Breakfast</string>
+    <string name="lunchName">Lunch</string>
+    <string name="dinnerName">Dinner</string>
+    <string name="foodName">Food</string>
+    <string name="snacksName">Snacks</string>
+    <string name="exerciseName">Exercise</string>
+    <string name="weightliftingName">Weightlifting</string>
+    <string name="cardioName">Cardio</string>
+    <string name="mixedName">Mixed</string>
+    <string name="NKIName">Net Kilojoile Intake</string>
+    <string name="totalName">Total</string>
 </resources>
