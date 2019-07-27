@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent makeEntry = new Intent(getApplicationContext(), EntryActivity.class);
+                Intent newCalculation = new Intent(getApplicationContext(), CalculatorActivity.class);
 
-                startActivity(makeEntry);
+                startActivity(newCalculation);
             }
         });
     }
