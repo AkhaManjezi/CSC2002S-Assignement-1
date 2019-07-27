@@ -13,4 +13,6 @@
     <string name="mixedName">Mixed</string>
     <string name="NKIName">Net Kilojoile Intake</string>
     <string name="totalName">Total</string>
+    <string name="plusText">+</string>
+    <string name="equalsText">=</string>
 </resources>
