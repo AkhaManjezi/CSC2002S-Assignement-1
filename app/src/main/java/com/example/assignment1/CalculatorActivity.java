@@ -17,7 +17,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class CalculatorActivity extends AppCompatActivity {
 
@@ -35,8 +34,10 @@ public class CalculatorActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                entryArrayList.add(newEntry);
                 saveData();
                 Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
+                viewEntry.putExtra("Uniqid", "From_calculator");
 
                 startActivity(viewEntry);
             }
@@ -55,6 +56,8 @@ public class CalculatorActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                updateEntry();
+                updateTotals();
 
             }
         };
