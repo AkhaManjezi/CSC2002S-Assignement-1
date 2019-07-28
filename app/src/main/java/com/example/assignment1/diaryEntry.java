@@ -12,7 +12,17 @@ public class DiaryEntry {
     private String mixed;
     private Date date;
 
+    public DiaryEntry(){
+        this.breakfast = "0";
+        this.lunch = "0";
+        this.dinner = "0";
+        this.snacks = "0";
+        this.weightlifting = "0";
+        this.cardio = "0";
+        this.mixed = "0";
+        this.date = new Date();
 
+    }
 
     public DiaryEntry(String breakfast, String lunch, String dinner, String snacks, String weightlifting, String cardio, String mixed, Date date){
         this.breakfast = breakfast;
