@@ -2,6 +2,7 @@ package com.example.assignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 public class CalculatorActivity extends AppCompatActivity {
 
@@ -32,6 +34,9 @@ public class CalculatorActivity extends AppCompatActivity {
             public void onClick(View view) {
                 newEntry();
                 saveData();
+                Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
+
+                startActivity(viewEntry);
             }
         });
     }
