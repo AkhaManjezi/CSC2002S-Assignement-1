@@ -2,19 +2,19 @@ package com.example.assignment1;
 
 import java.util.Date;
 
-public class diaryEntry {
-    private double breakfast;
-    private double lunch;
-    private double dinner;
-    private double snacks;
-    private double weightlifting;
-    private double cardio;
-    private double mixed;
+public class DiaryEntry {
+    private String breakfast;
+    private String lunch;
+    private String dinner;
+    private String snacks;
+    private String weightlifting;
+    private String cardio;
+    private String mixed;
     private Date date;
 
 
 
-    public diaryEntry(double breakfast, double lunch, double dinner, double snacks, double weightlifting, double cardio, double mixed, Date date){
+    public DiaryEntry(String breakfast, String lunch, String dinner, String snacks, String weightlifting, String cardio, String mixed, Date date){
         this.breakfast = breakfast;
         this.lunch = lunch;
         this.dinner = dinner;
@@ -25,31 +25,31 @@ public class diaryEntry {
         this.date = date;
     }
 
-    public void setBreakfast(double breakfast) {
+    public void setBreakfast(String breakfast) {
         this.breakfast = breakfast;
     }
 
-    public void setLunch(double lunch) {
+    public void setLunch(String lunch) {
         this.lunch = lunch;
     }
 
-    public void setDinner(double dinner) {
+    public void setDinner(String dinner) {
         this.dinner = dinner;
     }
 
-    public void setSnacks(double snacks) {
+    public void setSnacks(String snacks) {
         this.snacks = snacks;
     }
 
-    public void setWeightlifting(double weightlifting) {
+    public void setWeightlifting(String weightlifting) {
         this.weightlifting = weightlifting;
     }
 
-    public void setCardio(double cardio) {
+    public void setCardio(String cardio) {
         this.cardio = cardio;
     }
 
-    public void setMixed(double mixed) {
+    public void setMixed(String mixed) {
         this.mixed = mixed;
     }
 
@@ -57,31 +57,31 @@ public class diaryEntry {
         this.date = date;
     }
 
-    public double getBreakfast() {
+    public String getBreakfast() {
         return breakfast;
     }
 
-    public double getLunch() {
+    public String getLunch() {
         return lunch;
     }
 
-    public double getDinner() {
+    public String getDinner() {
         return dinner;
     }
 
-    public double getSnacks() {
+    public String getSnacks() {
         return snacks;
     }
 
-    public double getCardio() {
+    public String getCardio() {
         return cardio;
     }
 
-    public double getMixed() {
+    public String getMixed() {
         return mixed;
     }
 
-    public double getWeightlifting() {
+    public String getWeightlifting() {
         return weightlifting;
     }
 
@@ -89,15 +89,15 @@ public class diaryEntry {
         return date;
     }
 
-    public double getFoodKJ() {
-        return (getBreakfast() + getLunch() + getDinner() + getSnacks());
+    public String getFoodKJ() {
+        return (Double.parseDouble(getBreakfast()) + Double.parseDouble(getLunch()) + Double.parseDouble(getDinner()) + Double.parseDouble(getSnacks())) + "";
     }
 
-    public double getExerciseKJ() {
-        return (getWeightlifting() + getCardio() + getMixed());
+    public String getExerciseKJ() {
+        return (Double.parseDouble(getWeightlifting()) + Double.parseDouble(getCardio()) + Double.parseDouble(getMixed())) + "";
     }
 
-    public double getNKI() {
-        return (getFoodKJ() - getExerciseKJ());
+    public String getNKI() {
+        return (Double.parseDouble(getFoodKJ()) - Double.parseDouble(getExerciseKJ())) + "";
     }
 }
