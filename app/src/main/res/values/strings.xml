@@ -11,11 +11,12 @@
     <string name="weightliftingName">Weightlifting</string>
     <string name="cardioName">Cardio</string>
     <string name="mixedName">Mixed</string>
-    <string name="NKIName">Net Kilojoile Intake</string>
+    <string name="NKIName">Net Kilojoule Intake</string>
     <string name="totalName">Total</string>
     <string name="plusText">+</string>
     <string name="equalsText">=</string>
     <string name="zeroText">0</string>
     <string name="kjText">kJ</string>
     <string name="saveText">Save</string>
+    <string name="avgNKI">Average NKI</string>
 </resources>
