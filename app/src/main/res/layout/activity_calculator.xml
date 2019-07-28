@@ -64,7 +64,6 @@
                         android:id="@+id/breakfastTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/kjText"
                         android:inputType="numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -96,7 +95,6 @@
                         android:id="@+id/lunchTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/kjText"
                         android:inputType="numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +126,6 @@
                         android:id="@+id/dinnerTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/kjText"
                         android:inputType="numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -160,7 +157,6 @@
                         android:id="@+id/snacksTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/kjText"
                         android:inputType="numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -183,7 +179,6 @@
                     android:layout_height="30dp"
                     android:layout_weight="3"
                     android:gravity="center|start"
-                    android:text="TextView"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
@@ -221,7 +216,6 @@
                         android:id="@+id/weightliftingTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/kjText"
                         android:inputType="number|numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -252,7 +246,6 @@
                         android:id="@+id/cardioTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/kjText"
                         android:inputType="number|numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -283,7 +276,6 @@
                         android:id="@+id/mixedTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/kjText"
                         android:inputType="number|numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -305,7 +297,6 @@
                     android:layout_height="30dp"
                     android:layout_weight="3"
                     android:gravity="center|start"
-                    android:text="TextView"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
@@ -388,7 +379,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="TextView"
                     android:textAlignment="center"
                     android:textColor="@android:color/black" />
 
@@ -406,7 +396,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="TextView"
                     android:textAlignment="center"
                     android:textColor="@android:color/black" />
 
@@ -424,7 +413,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="TextView"
                     android:textAlignment="center"
                     android:textColor="@android:color/black" />
             </LinearLayout>
