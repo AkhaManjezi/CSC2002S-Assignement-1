@@ -110,4 +110,18 @@ public class DiaryEntry {
     public String getNKI() {
         return (Double.parseDouble(getFoodKJ()) - Double.parseDouble(getExerciseKJ())) + "";
     }
+
+    @Override
+    public String toString() {
+        return "DiaryEntry{" +
+                "breakfast='" + breakfast + '\'' +
+                ", lunch='" + lunch + '\'' +
+                ", dinner='" + dinner + '\'' +
+                ", snacks='" + snacks + '\'' +
+                ", weightlifting='" + weightlifting + '\'' +
+                ", cardio='" + cardio + '\'' +
+                ", mixed='" + mixed + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }
