@@ -21,7 +21,15 @@ import java.util.ArrayList;
 public class CalculatorActivity extends AppCompatActivity {
 
     ArrayList<DiaryEntry> entryArrayList;
-    DiaryEntry newEntry = new DiaryEntry();
+    DiaryEntry newEntry;
+    int currentIndex = -1;
+    EditText breakfastInput;
+    EditText lunchInput;
+    EditText dinnerInput;
+    EditText snacksInput;
+    EditText weightliftingInput;
+    EditText cardioInput;
+    EditText mixedInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +38,43 @@ public class CalculatorActivity extends AppCompatActivity {
 
         loadData();
 
+         breakfastInput = findViewById(R.id.breakfastTextInput);
+         lunchInput = findViewById(R.id.lunchTextInput);
+         dinnerInput = findViewById(R.id.dinnerTextInput);
+         snacksInput = findViewById(R.id.snacksTextInput);
+         weightliftingInput = findViewById(R.id.weightliftingTextInput);
+         cardioInput = findViewById(R.id.cardioTextInput);
+         mixedInput = findViewById(R.id.mixedTextInput);
+
         Button buttonSave = findViewById(R.id.saveButton);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                entryArrayList.add(newEntry);
+                if(currentIndex != -1){
+                    entryArrayList.set(currentIndex,newEntry);
+                }else{
+                    entryArrayList.add(newEntry);
+                    currentIndex = entryArrayList.size()-1;
+                }
                 saveData();
                 Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
                 viewEntry.putExtra("Uniqid", "From_calculator");
+                viewEntry.putExtra("index", (currentIndex)+"");
 
                 startActivity(viewEntry);
+                finish();
             }
         });
+
+        Intent intent = this.getIntent();
+        if(intent.getExtras().getString("Uniqid").equals("From_diary")){
+            currentIndex = Integer.parseInt(intent.getExtras().getString("index"));
+            newEntry = entryArrayList.get(currentIndex);
+            edit();
+            updateTotals();
+        }else{
+            newEntry = new DiaryEntry();
+        }
 
         TextWatcher textWatcher = new TextWatcher() {
             @Override
@@ -62,13 +95,6 @@ public class CalculatorActivity extends AppCompatActivity {
             }
         };
 
-        EditText breakfastInput = findViewById(R.id.breakfastTextInput);
-        EditText lunchInput = findViewById(R.id.lunchTextInput);
-        EditText dinnerInput = findViewById(R.id.dinnerTextInput);
-        EditText snacksInput = findViewById(R.id.snacksTextInput);
-        EditText weightliftingInput = findViewById(R.id.weightliftingTextInput);
-        EditText cardioInput = findViewById(R.id.cardioTextInput);
-        EditText mixedInput = findViewById(R.id.mixedTextInput);
         breakfastInput.addTextChangedListener(textWatcher);
         lunchInput.addTextChangedListener(textWatcher);
         dinnerInput.addTextChangedListener(textWatcher);
@@ -76,7 +102,6 @@ public class CalculatorActivity extends AppCompatActivity {
         weightliftingInput.addTextChangedListener(textWatcher);
         cardioInput.addTextChangedListener(textWatcher);
         mixedInput.addTextChangedListener(textWatcher);
-
 
     }
 
@@ -133,6 +158,21 @@ public class CalculatorActivity extends AppCompatActivity {
         if (entryArrayList == null) {
             entryArrayList = new ArrayList<>();
         }
+    }
+
+    private void edit() {
+
+        breakfastInput.setText(newEntry.getBreakfast());
+        lunchInput.setText(newEntry.getLunch());
+        dinnerInput.setText(newEntry.getDinner());
+        snacksInput.setText(newEntry.getSnacks());
+        weightliftingInput.setText(newEntry.getWeightlifting());
+        cardioInput.setText(newEntry.getCardio());
+        mixedInput.setText(newEntry.getMixed());
+    }
+
+    private void clearZero(){
+
     }
 
 }
