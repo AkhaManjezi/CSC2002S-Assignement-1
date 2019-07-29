@@ -33,18 +33,33 @@ public class EntryActivity extends AppCompatActivity {
         loadData();
 
         if(intent.getExtras().getString("Uniqid").equals("From_calculator")){
-            diaryEntry = entryArrayList.get(entryArrayList.size()-1);
+            diaryEntry = entryArrayList.get(Integer.parseInt(intent.getExtras().getString("index")));
         }
         displayData();
 
-        Button buttonSave = findViewById(R.id.overviewButton);
-        buttonSave.setOnClickListener(new View.OnClickListener() {
+        Button buttonOverview = findViewById(R.id.overviewButton);
+        buttonOverview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent viewOverview = new Intent(getApplicationContext(), MainActivity.class);
                 viewOverview.putExtra("Uniqid", "From_diary");
 
                 startActivity(viewOverview);
+                finish();
+            }
+        });
+
+        Button buttonEdit = findViewById(R.id.editButton);
+        buttonEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent viewEdit = new Intent(getApplicationContext(), CalculatorActivity.class);
+                viewEdit.putExtra("Uniqid", "From_diary");
+                String index = entryArrayList.indexOf(diaryEntry)+"";
+                viewEdit.putExtra("index", index);
+
+                startActivity(viewEdit);
+                finish();
             }
         });
 
