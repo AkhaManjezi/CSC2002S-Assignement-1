@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.lang.reflect.Type;
@@ -35,6 +36,17 @@ public class EntryActivity extends AppCompatActivity {
             diaryEntry = entryArrayList.get(entryArrayList.size()-1);
         }
         displayData();
+
+        Button buttonSave = findViewById(R.id.overviewButton);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent viewOverview = new Intent(getApplicationContext(), MainActivity.class);
+                viewOverview.putExtra("Uniqid", "From_diary");
+
+                startActivity(viewOverview);
+            }
+        });
 
     }
 
