@@ -171,8 +171,4 @@ public class CalculatorActivity extends AppCompatActivity {
         mixedInput.setText(newEntry.getMixed());
     }
 
-    private void clearZero(){
-
-    }
-
 }
