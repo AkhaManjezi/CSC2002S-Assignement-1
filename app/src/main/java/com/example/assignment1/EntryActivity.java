@@ -32,7 +32,7 @@ public class EntryActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         loadData();
 
-        if(intent.getExtras().getString("Uniqid").equals("From_calculator")){
+        if(intent.getExtras().getString("Uniqid").equals("From_calculator") || intent.getExtras().getString("Uniqid").equals("From_overview") || intent.getExtras().getString("Uniqid").equals("From_diary")){
             diaryEntry = entryArrayList.get(Integer.parseInt(intent.getExtras().getString("index")));
         }
         displayData();
@@ -67,6 +67,34 @@ public class EntryActivity extends AppCompatActivity {
                 viewEdit.putExtra("index", index);
 
                 startActivity(viewEdit);
+                finish();
+            }
+        });
+
+        Button buttonNext = findViewById(R.id.nextButton);
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent viewNext = new Intent(getApplicationContext(), EntryActivity.class);
+                viewNext.putExtra("Uniqid", "From_diary");
+                String index = (entryArrayList.indexOf(diaryEntry)+1)+"";
+                viewNext.putExtra("index", index);
+
+                startActivity(viewNext);
+                finish();
+            }
+        });
+
+        Button buttonPrevious = findViewById(R.id.previousButton);
+        buttonPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent viewPrevious = new Intent(getApplicationContext(), EntryActivity.class);
+                viewPrevious.putExtra("Uniqid", "From_diary");
+                String index = (entryArrayList.indexOf(diaryEntry)-1)+"";
+                viewPrevious.putExtra("index", index);
+
+                startActivity(viewPrevious);
                 finish();
             }
         });
