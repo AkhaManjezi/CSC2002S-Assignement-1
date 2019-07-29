@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private DiaryEntryAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     ArrayList<DiaryEntry> entryArrayList;
 
@@ -37,12 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         loadData();
 
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new DiaryEntryAdapter(entryArrayList);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        buildRecyclerView();
 
         ((TextView) findViewById(R.id.NKIAverageValue)).setText(NKIAverage());
 
@@ -99,5 +94,28 @@ public class MainActivity extends AppCompatActivity {
             total += Double.parseDouble(entryArrayList.get(i).getNKI());
         }
         return String.format("%.2f kJ", total/entryArrayList.size());
+    }
+
+    private void buildRecyclerView(){
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new DiaryEntryAdapter(entryArrayList);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClickListener(new DiaryEntryAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+//                entryArrayList.get(position);
+                Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
+                viewEntry.putExtra("Uniqid", "From_calculator");
+                viewEntry.putExtra("index", (position)+"");
+
+                startActivity(viewEntry);
+                finish();
+            }
+        });
+
     }
 }

@@ -13,16 +13,37 @@ import java.util.ArrayList;
 
 public class DiaryEntryAdapter extends RecyclerView.Adapter<DiaryEntryAdapter.DiaryEntryViewHolder> {
     private ArrayList<DiaryEntry> diaryEntries;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
 
     public static class DiaryEntryViewHolder extends RecyclerView.ViewHolder {
 
         public TextView dateView;
         public TextView NKIView;
 
-        public DiaryEntryViewHolder(@NonNull View itemView) {
+        public DiaryEntryViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             dateView = itemView.findViewById(R.id.dateText);
             NKIView = itemView.findViewById(R.id.NKIValue);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -34,7 +55,7 @@ public class DiaryEntryAdapter extends RecyclerView.Adapter<DiaryEntryAdapter.Di
     @Override
     public DiaryEntryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.entry_item, parent, false);
-        DiaryEntryViewHolder diaryEntryViewHolder = new DiaryEntryViewHolder(v);
+        DiaryEntryViewHolder diaryEntryViewHolder = new DiaryEntryViewHolder(v, mListener);
         return diaryEntryViewHolder;
     }
 
