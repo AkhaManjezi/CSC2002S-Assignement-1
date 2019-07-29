@@ -35,7 +35,7 @@
                     android:id="@+id/foodNameView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="1.2"
                     android:lineSpacingExtra="10dp"
                     android:text="@string/foodName"
                     android:textAllCaps="false"
@@ -43,12 +43,21 @@
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
                 <Button
                     android:id="@+id/editButton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1.2"
                     android:drawableEnd="@drawable/ic_edit_black_24dp"
                     android:text="@string/editText" />
             </LinearLayout>
