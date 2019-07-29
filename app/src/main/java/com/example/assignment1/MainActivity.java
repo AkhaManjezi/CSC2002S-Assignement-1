@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new DiaryEntryAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-//                entryArrayList.get(position);
                 Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
                 viewEntry.putExtra("Uniqid", "From_calculator");
                 viewEntry.putExtra("index", (position)+"");
