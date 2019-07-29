@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -57,7 +56,6 @@ public class CalculatorActivity extends AppCompatActivity {
 
         currentDate = Calendar.getInstance();
         final TextView dateText = findViewById(R.id.dateText);
-        dateText.setText(formatter.format(currentDate.getTime()));
 
         Button buttonSave = findViewById(R.id.saveButton);
         buttonSave.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +81,13 @@ public class CalculatorActivity extends AppCompatActivity {
         if(intent.getExtras().getString("Uniqid").equals("From_diary")){
             currentIndex = Integer.parseInt(intent.getExtras().getString("index"));
             newEntry = entryArrayList.get(currentIndex);
+            dateText.setText(formatter.format(newEntry.getDate().getTime()));
+            currentDate = newEntry.getDate();
             edit();
             updateTotals();
         }else{
             newEntry = new DiaryEntry();
+            dateText.setText(formatter.format(currentDate.getTime()));
         }
 
         TextWatcher textWatcher = new TextWatcher() {
@@ -119,13 +120,12 @@ public class CalculatorActivity extends AppCompatActivity {
         dateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
+                int year = currentDate.get(Calendar.YEAR);
+                int month = currentDate.get(Calendar.MONTH);
+                int day = currentDate.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(CalculatorActivity.this, android.R.style.Theme_Material_Dialog_MinWidth, mdateSetListener, year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
                 dialog.show();
             }
         });
