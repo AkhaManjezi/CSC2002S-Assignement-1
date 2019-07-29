@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Kilojoule Counter</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_entry">EntryActivity</string>
+    <string name="title_activity_entry">Kilojoule Counter</string>
     <string name="breakfastName">Breakfast</string>
     <string name="lunchName">Lunch</string>
     <string name="dinnerName">Dinner</string>
