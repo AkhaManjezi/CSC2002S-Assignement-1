@@ -37,6 +37,14 @@ public class EntryActivity extends AppCompatActivity {
         }
         displayData();
 
+        if(intent.getExtras().getString("index").equals("0")){
+            Button prevButton =  findViewById(R.id.previousButton);
+            prevButton.setVisibility(View.INVISIBLE);
+        }else if(intent.getExtras().getString("index").equals((entryArrayList.size()-1)+"")){
+            Button nextButton =  findViewById(R.id.nextButton);
+            nextButton.setVisibility(View.INVISIBLE);
+        }
+
         Button buttonOverview = findViewById(R.id.overviewButton);
         buttonOverview.setOnClickListener(new View.OnClickListener() {
             @Override
