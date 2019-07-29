@@ -1,6 +1,6 @@
 package com.example.assignment1;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class DiaryEntry {
     private String breakfast;
@@ -10,7 +10,7 @@ public class DiaryEntry {
     private String weightlifting;
     private String cardio;
     private String mixed;
-    private Date date;
+    private Calendar date;
 
     public DiaryEntry(){
         this.breakfast = "0";
@@ -20,11 +20,11 @@ public class DiaryEntry {
         this.weightlifting = "0";
         this.cardio = "0";
         this.mixed = "0";
-        this.date = new Date();
+        this.date = Calendar.getInstance();
 
     }
 
-    public DiaryEntry(String breakfast, String lunch, String dinner, String snacks, String weightlifting, String cardio, String mixed, Date date){
+    public DiaryEntry(String breakfast, String lunch, String dinner, String snacks, String weightlifting, String cardio, String mixed, Calendar date){
         this.breakfast = breakfast;
         this.lunch = lunch;
         this.dinner = dinner;
@@ -63,7 +63,7 @@ public class DiaryEntry {
         this.mixed = mixed;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         this.date = date;
     }
 
@@ -95,7 +95,7 @@ public class DiaryEntry {
         return weightlifting;
     }
 
-    public Date getDate() {
+    public Calendar getDate() {
         return date;
     }
 
