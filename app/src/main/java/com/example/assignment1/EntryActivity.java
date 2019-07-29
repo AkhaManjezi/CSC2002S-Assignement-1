@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class EntryActivity extends AppCompatActivity {
@@ -36,6 +35,10 @@ public class EntryActivity extends AppCompatActivity {
             diaryEntry = entryArrayList.get(Integer.parseInt(intent.getExtras().getString("index")));
         }
         displayData();
+
+        final SimpleDateFormat formatter = new SimpleDateFormat("EEE d MMM yyyy");
+        TextView dateText = findViewById(R.id.dateText);
+        dateText.setText(formatter.format(diaryEntry.getDate().getTime()));
 
         if(intent.getExtras().getString("index").equals("0")){
             Button prevButton =  findViewById(R.id.previousButton);
