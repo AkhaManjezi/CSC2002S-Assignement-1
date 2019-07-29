@@ -81,6 +81,7 @@ public class EntryActivity extends AppCompatActivity {
                 viewNext.putExtra("index", index);
 
                 startActivity(viewNext);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         });
@@ -95,6 +96,7 @@ public class EntryActivity extends AppCompatActivity {
                 viewPrevious.putExtra("index", index);
 
                 startActivity(viewPrevious);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 finish();
             }
         });
