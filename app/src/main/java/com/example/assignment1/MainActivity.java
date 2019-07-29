@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
-                viewEntry.putExtra("Uniqid", "From_calculator");
+                viewEntry.putExtra("Uniqid", "From_overview");
                 viewEntry.putExtra("index", (position)+"");
 
                 startActivity(viewEntry);
