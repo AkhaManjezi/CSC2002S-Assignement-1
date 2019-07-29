@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent newCalculation = new Intent(getApplicationContext(), CalculatorActivity.class);
+                newCalculation.putExtra("Uniqid", "From_overview");
 
                 startActivity(newCalculation);
             }
