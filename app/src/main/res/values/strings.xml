@@ -19,4 +19,6 @@
     <string name="kjText">kJ</string>
     <string name="saveText">Save</string>
     <string name="avgNKI">Average NKI</string>
+    <string name="editText">Edit</string>
+    <string name="overviewText">Overview</string>
 </resources>
