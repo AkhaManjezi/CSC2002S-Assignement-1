@@ -1,4 +1,4 @@
-package com.example.assignment1;
+package com.example.assignment1.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.assignment1.DiaryEntry;
+import com.example.assignment1.R;
+import com.example.assignment1.entry.EntryActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -21,6 +24,7 @@ import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 
 public class CalculatorActivity extends AppCompatActivity {
 
@@ -65,9 +69,9 @@ public class CalculatorActivity extends AppCompatActivity {
                     entryArrayList.set(currentIndex,newEntry);
                 }else{
                     entryArrayList.add(newEntry);
-                    currentIndex = entryArrayList.size()-1;
                 }
                 saveData();
+                currentIndex = entryArrayList.indexOf(newEntry);
                 Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
                 viewEntry.putExtra("Uniqid", "From_calculator");
                 viewEntry.putExtra("index", (currentIndex)+"");
@@ -183,6 +187,7 @@ public class CalculatorActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
+        Collections.sort(entryArrayList);
         String json = gson.toJson(entryArrayList);
         editor.putString("task list", json);
         editor.apply();
