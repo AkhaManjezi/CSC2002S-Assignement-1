@@ -1,9 +1,13 @@
-package com.example.assignment1;
+package com.example.assignment1.entry;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.example.assignment1.calculator.CalculatorActivity;
+import com.example.assignment1.DiaryEntry;
+import com.example.assignment1.main.MainActivity;
+import com.example.assignment1.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
