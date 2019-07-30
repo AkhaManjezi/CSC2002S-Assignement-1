@@ -1,11 +1,15 @@
-package com.example.assignment1;
+package com.example.assignment1.main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.example.assignment1.calculator.CalculatorActivity;
+import com.example.assignment1.DiaryEntry;
+import com.example.assignment1.DiaryEntryAdapter;
+import com.example.assignment1.R;
+import com.example.assignment1.entry.EntryActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Type;
@@ -93,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < entryArrayList.size(); i++) {
             total += Double.parseDouble(entryArrayList.get(i).getNKI());
         }
-        return String.format("%.2f kJ", total/entryArrayList.size());
+        String output = (entryArrayList.size()==0) ? "0.0 kJ" : String.format("%.2f kJ", total/entryArrayList.size());
+        return output;
     }
 
     private void buildRecyclerView(){
