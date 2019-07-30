@@ -2,7 +2,7 @@ package com.example.assignment1;
 
 import java.util.Calendar;
 
-public class DiaryEntry {
+public class DiaryEntry  implements Comparable<DiaryEntry>{
     private String breakfast;
     private String lunch;
     private String dinner;
@@ -109,6 +109,11 @@ public class DiaryEntry {
 
     public String getNKI() {
         return (Double.parseDouble(getFoodKJ()) - Double.parseDouble(getExerciseKJ())) + "";
+    }
+
+    @Override
+    public int compareTo(DiaryEntry toCompare){
+        return toCompare.getDate().compareTo(this.getDate());
     }
 
     @Override
