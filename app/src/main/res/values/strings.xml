@@ -22,4 +22,6 @@
     <string name="editText">Edit</string>
     <string name="overviewText">Overview</string>
     <string name="minusText">-</string>
+    <string name="nextText">Next</string>
+    <string name="previousText">Previous</string>
 </resources>
