@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Compteur de Kilojoules</string>
     <string name="NKIName">Apport net en kilojoules</string>
-    <string name="action_settings">réglages</string>
+    <string name="action_settings">Réglages</string>
     <string name="avgNKI">NKI Moyen</string>
     <string name="breakfastName">Petit Déjeuner</string>
     <string name="lunchName">Déjeuner</string>
@@ -24,5 +24,5 @@
     <string name="title_activity_entry">Compteur de Kilojoules</string>
     <string name="zeroText">0</string>
     <string name="saveText">Enregistrer</string>
-    <string name="snacksName">Collations</string>
+    <string name="snacksName">Encas</string>
 </resources>
