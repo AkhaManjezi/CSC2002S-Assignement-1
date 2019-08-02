@@ -65,7 +65,7 @@ public class EntryActivity extends AppCompatActivity {
         buttonEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToCalculator();
+                goToCalculator("edit");
             }
         });
 
@@ -106,11 +106,7 @@ public class EntryActivity extends AppCompatActivity {
     {
         //do whatever you want the 'Back' button to do
         //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
-        if (intent.getExtras().getString("Uniqid").equals("From_calculator")) {
-            goToCalculator();
-        }else if(intent.getExtras().getString("Uniqid").equals("From_overview")){
-            goToOverview();
-        }
+        goToOverview();
     }
 
     public void goToOverview(){
@@ -121,10 +117,13 @@ public class EntryActivity extends AppCompatActivity {
         finish();
     }
 
-    public void goToCalculator(){
+    public void goToCalculator(String back){
         Intent viewEdit = new Intent(getApplicationContext(), CalculatorActivity.class);
         viewEdit.putExtra("Uniqid", "From_diary");
         String index = entryArrayList.indexOf(diaryEntry) + "";
+        if (back.equals("edit")){
+            viewEdit.putExtra("edit", back);
+        }
         viewEdit.putExtra("index", index);
 
         startActivity(viewEdit);

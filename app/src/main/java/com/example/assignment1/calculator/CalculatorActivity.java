@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.assignment1.DiaryEntry;
 import com.example.assignment1.R;
 import com.example.assignment1.entry.EntryActivity;
+import com.example.assignment1.main.MainActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -74,12 +75,7 @@ public class CalculatorActivity extends AppCompatActivity {
                 }
                 saveData();
                 currentIndex = entryArrayList.indexOf(newEntry);
-                Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
-                viewEntry.putExtra("Uniqid", "From_calculator");
-                viewEntry.putExtra("index", (currentIndex)+"");
-
-                startActivity(viewEntry);
-                finish();
+                goToDiary();
             }
         });
 
@@ -129,7 +125,6 @@ public class CalculatorActivity extends AppCompatActivity {
                 int day = currentDate.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(CalculatorActivity.this, android.R.style.Theme_Material_Dialog_MinWidth, mdateSetListener, year, month, day);
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
                 dialog.show();
             }
         });
@@ -150,38 +145,63 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private void updateEntry(){
-        EditText breakfastText = findViewById(R.id.breakfastTextInput);
-        String breafastKJ = (breakfastText.getText().length() != 0) ? breakfastText.getText().toString() : 0 + "";
+        String breafastKJ = (breakfastInput.getText().length() != 0) ? breakfastInput.getText().toString() : 0 + "";
         newEntry.setBreakfast(breafastKJ);
-        EditText lunchText = findViewById(R.id.lunchTextInput);
-        String lunchKJ = (lunchText.getText().length() != 0) ? lunchText.getText().toString() : 0 + "";
+        String lunchKJ = (lunchInput.getText().length() != 0) ? lunchInput.getText().toString() : 0 + "";
         newEntry.setLunch(lunchKJ);
-        EditText dinnerText = findViewById(R.id.dinnerTextInput);
-        String dinnerKJ = (dinnerText.getText().length() != 0) ? dinnerText.getText().toString() : 0 + "";
+        String dinnerKJ = (dinnerInput.getText().length() != 0) ? dinnerInput.getText().toString() : 0 + "";
         newEntry.setDinner(dinnerKJ);
-        EditText snacksText = findViewById(R.id.snacksTextInput);
-        String snacksKJ = (snacksText.getText().length() != 0) ? snacksText.getText().toString() : 0 + "";
+        String snacksKJ = (snacksInput.getText().length() != 0) ? snacksInput.getText().toString() : 0 + "";
         newEntry.setSnacks(snacksKJ);
-        EditText weightliftingText = findViewById(R.id.weightliftingTextInput);
-        String weightliftingKJ = (weightliftingText.getText().length() != 0) ? weightliftingText.getText().toString() : 0 + "";
+        String weightliftingKJ = (weightliftingInput.getText().length() != 0) ? weightliftingInput.getText().toString() : 0 + "";
         newEntry.setWeightlifting(weightliftingKJ);
-        EditText cardioText = findViewById(R.id.cardioTextInput);
-        String cardioKJ = (cardioText.getText().length() != 0) ? cardioText.getText().toString() : 0 + "";
+        String cardioKJ = (cardioInput.getText().length() != 0) ? cardioInput.getText().toString() : 0 + "";
         newEntry.setCardio(cardioKJ);
-        EditText mixedText = findViewById(R.id.mixedTextInput);
-        String mixedKJ = (mixedText.getText().length() != 0) ? mixedText.getText().toString() : 0 + "";
+        String mixedKJ = (mixedInput.getText().length() != 0) ? mixedInput.getText().toString() : 0 + "";
         newEntry.setMixed(mixedKJ);
 
     }
 
     private void updateTotals(){
-        String foodTotal = (Integer.parseInt((breakfastInput.getText().length() != 0) ? breakfastInput.getText().toString() : 0 + "") + Integer.parseInt((lunchInput.getText().length() != 0) ? lunchInput.getText().toString() : 0 + "") + Integer.parseInt((dinnerInput.getText().length() != 0) ? dinnerInput.getText().toString() : 0 + "") + Integer.parseInt((snacksInput.getText().length() != 0) ? snacksInput.getText().toString() : 0 + "")+"");
-        String exerciseTotal = (Integer.parseInt((weightliftingInput.getText().length() != 0) ? weightliftingInput.getText().toString() : 0 + "") + Integer.parseInt((cardioInput.getText().length() != 0) ? cardioInput.getText().toString() : 0 + "") + Integer.parseInt((mixedInput.getText().length() != 0) ? mixedInput.getText().toString() : 0 + "") + "");
-        ((TextView) findViewById(R.id.foodTotalValueView)).setText(foodTotal);
-        ((TextView) findViewById(R.id.exerciseTotalValueView)).setText(exerciseTotal);
-        ((TextView) findViewById(R.id.foodTotalNKIView)).setText(foodTotal);
-        ((TextView) findViewById(R.id.exerciseTotalNKIView)).setText(exerciseTotal);
-        ((TextView) findViewById(R.id.NKITotalView)).setText((Integer.parseInt(foodTotal) - Integer.parseInt(exerciseTotal)) + "");
+        new Thread(new Runnable() {
+            public void run() {
+                // a potentially time consuming task
+                final String foodTotal = (Integer.parseInt((breakfastInput.getText().length() != 0) ? breakfastInput.getText().toString() : 0 + "") + Integer.parseInt((lunchInput.getText().length() != 0) ? lunchInput.getText().toString() : 0 + "") + Integer.parseInt((dinnerInput.getText().length() != 0) ? dinnerInput.getText().toString() : 0 + "") + Integer.parseInt((snacksInput.getText().length() != 0) ? snacksInput.getText().toString() : 0 + "")+"");
+                final String exerciseTotal = (Integer.parseInt((weightliftingInput.getText().length() != 0) ? weightliftingInput.getText().toString() : 0 + "") + Integer.parseInt((cardioInput.getText().length() != 0) ? cardioInput.getText().toString() : 0 + "") + Integer.parseInt((mixedInput.getText().length() != 0) ? mixedInput.getText().toString() : 0 + "") + "");
+                final String NKITotal = (Integer.parseInt(foodTotal) - Integer.parseInt(exerciseTotal)) + "";
+                final TextView foodTotalValueView = findViewById(R.id.foodTotalValueView);
+                final TextView exerciseTotalValueView = findViewById(R.id.exerciseTotalValueView);
+                final TextView foodTotalNKIView = findViewById(R.id.foodTotalNKIView);
+                final TextView exerciseTotalNKIView = findViewById(R.id.exerciseTotalNKIView);
+                final TextView NKITotalView = findViewById(R.id.NKITotalView);
+
+                foodTotalValueView.post(new Runnable() {
+                    public void run() {
+                        foodTotalValueView.setText(foodTotal);
+                    }
+                });
+                exerciseTotalValueView.post(new Runnable() {
+                    public void run() {
+                        exerciseTotalValueView.setText(exerciseTotal);
+                    }
+                });
+                foodTotalNKIView.post(new Runnable() {
+                    public void run() {
+                        foodTotalNKIView.setText(foodTotal);
+                    }
+                });
+                exerciseTotalNKIView.post(new Runnable() {
+                    public void run() {
+                        exerciseTotalNKIView.setText(exerciseTotal);
+                    }
+                });
+                NKITotalView.post(new Runnable() {
+                    public void run() {
+                        NKITotalView.setText(NKITotal);
+                    }
+                });
+            }
+        }).start();
 
     }
 
@@ -223,17 +243,31 @@ public class CalculatorActivity extends AppCompatActivity {
         //do whatever you want the 'Back' button to do
         //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
         if (intent.getExtras().getString("Uniqid").equals("From_overview")) {
-
+            goToOverview();
         }else if(intent.getExtras().getString("Uniqid").equals("From_diary")){
-
+            if(intent.getExtras().getString("edit").equals("back")){
+                goToOverview();
+            }else if(intent.getExtras().getString("edit").equals("edit")){
+                goToDiary();
+            }
         }
     }
 
     public void goToDiary(){
+        Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
+        viewEntry.putExtra("Uniqid", "From_calculator");
+        viewEntry.putExtra("index", (currentIndex)+"");
 
+        startActivity(viewEntry);
+        finish();
     }
 
     public void goToOverview(){
+        Intent viewOverview = new Intent(getApplicationContext(), MainActivity.class);
+        viewOverview.putExtra("Uniqid", "From_calculator");
+
+        startActivity(viewOverview);
+        finish();
 
     }
 
