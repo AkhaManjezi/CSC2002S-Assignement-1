@@ -40,6 +40,7 @@ public class CalculatorActivity extends AppCompatActivity {
     EditText mixedInput;
     DatePickerDialog.OnDateSetListener mdateSetListener;
     Calendar currentDate;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class CalculatorActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = this.getIntent();
+        intent = this.getIntent();
         if(intent.getExtras().getString("Uniqid").equals("From_diary")){
             currentIndex = Integer.parseInt(intent.getExtras().getString("index"));
             newEntry = entryArrayList.get(currentIndex);
@@ -214,6 +215,18 @@ public class CalculatorActivity extends AppCompatActivity {
         weightliftingInput.setText(newEntry.getWeightlifting());
         cardioInput.setText(newEntry.getCardio());
         mixedInput.setText(newEntry.getMixed());
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        //do whatever you want the 'Back' button to do
+        //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
+        if (intent.getExtras().getString("Uniqid").equals("From_calculator")) {
+
+        }else if(intent.getExtras().getString("Uniqid").equals("From_overview")){
+
+        }
     }
 
 }
