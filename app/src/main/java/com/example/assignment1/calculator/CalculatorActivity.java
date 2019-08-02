@@ -66,6 +66,7 @@ public class CalculatorActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                updateEntry();
                 if(currentIndex != -1){
                     entryArrayList.set(currentIndex,newEntry);
                 }else{
@@ -108,9 +109,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                updateEntry();
                 updateTotals();
-
             }
         };
 
@@ -176,11 +175,13 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private void updateTotals(){
-        ((TextView) findViewById(R.id.foodTotalValueView)).setText(newEntry.getFoodKJ());
-        ((TextView) findViewById(R.id.exerciseTotalValueView)).setText(newEntry.getExerciseKJ());
-        ((TextView) findViewById(R.id.foodTotalNKIView)).setText(newEntry.getFoodKJ());
-        ((TextView) findViewById(R.id.exerciseTotalNKIView)).setText(newEntry.getExerciseKJ());
-        ((TextView) findViewById(R.id.NKITotalView)).setText(newEntry.getNKI());
+        String foodTotal = (Integer.parseInt((breakfastInput.getText().length() != 0) ? breakfastInput.getText().toString() : 0 + "") + Integer.parseInt((lunchInput.getText().length() != 0) ? lunchInput.getText().toString() : 0 + "") + Integer.parseInt((dinnerInput.getText().length() != 0) ? dinnerInput.getText().toString() : 0 + "") + Integer.parseInt((snacksInput.getText().length() != 0) ? snacksInput.getText().toString() : 0 + "")+"");
+        String exerciseTotal = (Integer.parseInt((weightliftingInput.getText().length() != 0) ? weightliftingInput.getText().toString() : 0 + "") + Integer.parseInt((cardioInput.getText().length() != 0) ? cardioInput.getText().toString() : 0 + "") + Integer.parseInt((mixedInput.getText().length() != 0) ? mixedInput.getText().toString() : 0 + "") + "");
+        ((TextView) findViewById(R.id.foodTotalValueView)).setText(foodTotal);
+        ((TextView) findViewById(R.id.exerciseTotalValueView)).setText(exerciseTotal);
+        ((TextView) findViewById(R.id.foodTotalNKIView)).setText(foodTotal);
+        ((TextView) findViewById(R.id.exerciseTotalNKIView)).setText(exerciseTotal);
+        ((TextView) findViewById(R.id.NKITotalView)).setText((Integer.parseInt(foodTotal) - Integer.parseInt(exerciseTotal)) + "");
 
     }
 
@@ -207,7 +208,6 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private void edit() {
-
         breakfastInput.setText(newEntry.getBreakfast());
         lunchInput.setText(newEntry.getLunch());
         dinnerInput.setText(newEntry.getDinner());
@@ -222,11 +222,19 @@ public class CalculatorActivity extends AppCompatActivity {
     {
         //do whatever you want the 'Back' button to do
         //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
-        if (intent.getExtras().getString("Uniqid").equals("From_calculator")) {
+        if (intent.getExtras().getString("Uniqid").equals("From_overview")) {
 
-        }else if(intent.getExtras().getString("Uniqid").equals("From_overview")){
+        }else if(intent.getExtras().getString("Uniqid").equals("From_diary")){
 
         }
+    }
+
+    public void goToDiary(){
+
+    }
+
+    public void goToOverview(){
+
     }
 
 }
