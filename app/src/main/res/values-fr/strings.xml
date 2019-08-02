@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Compteur de Kilojoules</string>
+    <string name="NKIName">Apport net en kilojoules</string>
+    <string name="action_settings">Réglages</string>
+    <string name="avgNKI">NKI Moyen</string>
+    <string name="breakfastName">Petit Déjeuner</string>
+    <string name="lunchName">Déjeuner</string>
+    <string name="cardioName">Cardio</string>
+    <string name="dinnerName">Dîner</string>
+    <string name="editText">Modifier</string>
+    <string name="equalsText">=</string>
+    <string name="exerciseName">Exercise</string>
+    <string name="foodName">Aliments</string>
+    <string name="kjText">jK</string>
+    <string name="minusText">-</string>
+    <string name="mixedName">Mixte</string>
+    <string name="plusText">+</string>
+    <string name="overviewText">Vue d\'Ensemble</string>
+    <string name="nextText">Suivant</string>
+    <string name="previousText">Précédent</string>
+    <string name="totalName">Total</string>
+    <string name="weightliftingName">Musculation</string>
+    <string name="title_activity_entry">Compteur de Kilojoules</string>
+    <string name="zeroText">0</string>
+    <string name="saveText">Enregistrer</string>
+    <string name="snacksName">Encas</string>
+</resources>
