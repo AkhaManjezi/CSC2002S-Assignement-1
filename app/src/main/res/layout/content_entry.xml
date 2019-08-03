@@ -35,7 +35,6 @@
                     android:id="@+id/foodNameView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
                     android:lineSpacingExtra="10dp"
                     android:text="@string/foodName"
                     android:textAllCaps="false"
@@ -56,7 +55,8 @@
                     android:id="@+id/editButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center|end"
+                    android:layout_gravity="center"
+                    android:layout_weight="0"
                     android:drawableEnd="@drawable/ic_edit_black_24dp"
                     android:text="@string/editText" />
             </LinearLayout>
