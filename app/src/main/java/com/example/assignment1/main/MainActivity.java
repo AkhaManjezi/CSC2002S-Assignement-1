@@ -31,14 +31,15 @@ public class MainActivity extends AppCompatActivity {
     private DiaryEntryAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     ArrayList<DiaryEntry> entryArrayList;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadData();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        loadData();
 
         buildRecyclerView();
 
@@ -80,8 +81,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        Gson gson = new Gson();
+        new Thread(new Runnable() {
+            public void run() {
+                sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+                Gson gson = new Gson();
         String json = sharedPreferences.getString("task list", null);
         Type type = new TypeToken<ArrayList<DiaryEntry>>() {}.getType();
         entryArrayList = gson.fromJson(json, type);
@@ -89,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         if (entryArrayList == null) {
             entryArrayList = new ArrayList<>();
         }
+            }
+        }).start();
     }
 
     private String NKIAverage(){
