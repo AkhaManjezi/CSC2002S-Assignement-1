@@ -26,15 +26,16 @@ public class EntryActivity extends AppCompatActivity {
     ArrayList<DiaryEntry> entryArrayList;
     DiaryEntry diaryEntry;
     Intent intent;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadData();
         setContentView(R.layout.activity_entry);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         intent = this.getIntent();
-        loadData();
 
         if(intent.getExtras().getString("Uniqid").equals("From_calculator") || intent.getExtras().getString("Uniqid").equals("From_overview") || intent.getExtras().getString("Uniqid").equals("From_diary")){
             diaryEntry = entryArrayList.get(Integer.parseInt(intent.getExtras().getString("index")));
@@ -148,7 +149,9 @@ public class EntryActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        new Thread(new Runnable() {
+            public void run() {
+                sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("task list", null);
         Type type = new TypeToken<ArrayList<DiaryEntry>>() {}.getType();
@@ -157,6 +160,8 @@ public class EntryActivity extends AppCompatActivity {
         if (entryArrayList == null) {
             entryArrayList = new ArrayList<>();
         }
+            }
+        }).start();
     }
 
 }
