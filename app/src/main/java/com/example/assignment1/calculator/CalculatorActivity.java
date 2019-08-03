@@ -179,27 +179,27 @@ public class CalculatorActivity extends AppCompatActivity {
 
                 foodTotalValueView.post(new Runnable() {
                     public void run() {
-                        foodTotalValueView.setText(foodTotal);
+                        foodTotalValueView.setText(foodTotal + " kJ");
                     }
                 });
                 exerciseTotalValueView.post(new Runnable() {
                     public void run() {
-                        exerciseTotalValueView.setText(exerciseTotal);
+                        exerciseTotalValueView.setText(exerciseTotal + " kJ");
                     }
                 });
                 foodTotalNKIView.post(new Runnable() {
                     public void run() {
-                        foodTotalNKIView.setText(foodTotal);
+                        foodTotalNKIView.setText(foodTotal + " kJ");
                     }
                 });
                 exerciseTotalNKIView.post(new Runnable() {
                     public void run() {
-                        exerciseTotalNKIView.setText(exerciseTotal);
+                        exerciseTotalNKIView.setText(exerciseTotal + " kJ");
                     }
                 });
                 NKITotalView.post(new Runnable() {
                     public void run() {
-                        NKITotalView.setText(NKITotal);
+                        NKITotalView.setText(NKITotal + " kJ");
                     }
                 });
             }
