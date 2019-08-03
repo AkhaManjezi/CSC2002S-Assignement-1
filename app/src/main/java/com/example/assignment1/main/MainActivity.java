@@ -3,25 +3,24 @@ package com.example.assignment1.main;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import com.example.assignment1.calculator.CalculatorActivity;
-import com.example.assignment1.DiaryEntry;
-import com.example.assignment1.DiaryEntryAdapter;
-import com.example.assignment1.R;
-import com.example.assignment1.entry.EntryActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
+import com.example.assignment1.DiaryEntry;
+import com.example.assignment1.DiaryEntryAdapter;
+import com.example.assignment1.R;
+import com.example.assignment1.calculator.CalculatorActivity;
+import com.example.assignment1.entry.EntryActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -85,27 +84,28 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
                 Gson gson = new Gson();
-        String json = sharedPreferences.getString("task list", null);
-        Type type = new TypeToken<ArrayList<DiaryEntry>>() {}.getType();
-        entryArrayList = gson.fromJson(json, type);
+                String json = sharedPreferences.getString("task list", null);
+                Type type = new TypeToken<ArrayList<DiaryEntry>>() {
+                }.getType();
+                entryArrayList = gson.fromJson(json, type);
 
-        if (entryArrayList == null) {
-            entryArrayList = new ArrayList<>();
-        }
+                if (entryArrayList == null) {
+                    entryArrayList = new ArrayList<>();
+                }
             }
         }).start();
     }
 
-    private String NKIAverage(){
+    private String NKIAverage() {
         double total = 0;
         for (int i = 0; i < entryArrayList.size(); i++) {
             total += Double.parseDouble(entryArrayList.get(i).getNKI());
         }
-        String output = (entryArrayList.size()==0) ? "0.0 kJ" : String.format("%.2f kJ", total/entryArrayList.size());
+        String output = (entryArrayList.size() == 0) ? "0.0 kJ" : String.format("%.2f kJ", total / entryArrayList.size());
         return output;
     }
 
-    private void buildRecyclerView(){
+    private void buildRecyclerView() {
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 Intent viewEntry = new Intent(getApplicationContext(), EntryActivity.class);
                 viewEntry.putExtra("Uniqid", "From_overview");
-                viewEntry.putExtra("index", (position)+"");
+                viewEntry.putExtra("index", (position) + "");
 
                 startActivity(viewEntry);
                 finish();

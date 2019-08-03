@@ -3,20 +3,19 @@ package com.example.assignment1.entry;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import com.example.assignment1.calculator.CalculatorActivity;
-import com.example.assignment1.DiaryEntry;
-import com.example.assignment1.main.MainActivity;
-import com.example.assignment1.R;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import com.example.assignment1.DiaryEntry;
+import com.example.assignment1.R;
+import com.example.assignment1.calculator.CalculatorActivity;
+import com.example.assignment1.main.MainActivity;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
@@ -37,7 +36,7 @@ public class EntryActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         intent = this.getIntent();
 
-        if(intent.getExtras().getString("Uniqid").equals("From_calculator") || intent.getExtras().getString("Uniqid").equals("From_overview") || intent.getExtras().getString("Uniqid").equals("From_diary")){
+        if (intent.getExtras().getString("Uniqid").equals("From_calculator") || intent.getExtras().getString("Uniqid").equals("From_overview") || intent.getExtras().getString("Uniqid").equals("From_diary")) {
             diaryEntry = entryArrayList.get(Integer.parseInt(intent.getExtras().getString("index")));
         }
         displayData();
@@ -46,11 +45,11 @@ public class EntryActivity extends AppCompatActivity {
         TextView dateText = findViewById(R.id.dateText);
         dateText.setText(formatter.format(diaryEntry.getDate().getTime()));
 
-        if(intent.getExtras().getString("index").equals("0")){
-            Button prevButton =  findViewById(R.id.previousButton);
+        if (intent.getExtras().getString("index").equals("0")) {
+            Button prevButton = findViewById(R.id.previousButton);
             prevButton.setVisibility(View.INVISIBLE);
-        }else if(intent.getExtras().getString("index").equals((entryArrayList.size()-1)+"")){
-            Button nextButton =  findViewById(R.id.nextButton);
+        } else if (intent.getExtras().getString("index").equals((entryArrayList.size() - 1) + "")) {
+            Button nextButton = findViewById(R.id.nextButton);
             nextButton.setVisibility(View.INVISIBLE);
         }
 
@@ -76,7 +75,7 @@ public class EntryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent viewNext = new Intent(getApplicationContext(), EntryActivity.class);
                 viewNext.putExtra("Uniqid", "From_diary");
-                String index = (entryArrayList.indexOf(diaryEntry)+1)+"";
+                String index = (entryArrayList.indexOf(diaryEntry) + 1) + "";
                 viewNext.putExtra("index", index);
 
                 startActivity(viewNext);
@@ -91,7 +90,7 @@ public class EntryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent viewPrevious = new Intent(getApplicationContext(), EntryActivity.class);
                 viewPrevious.putExtra("Uniqid", "From_diary");
-                String index = (entryArrayList.indexOf(diaryEntry)-1)+"";
+                String index = (entryArrayList.indexOf(diaryEntry) - 1) + "";
                 viewPrevious.putExtra("index", index);
 
                 startActivity(viewPrevious);
@@ -103,14 +102,13 @@ public class EntryActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         //do whatever you want the 'Back' button to do
         //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
         goToOverview();
     }
 
-    public void goToOverview(){
+    public void goToOverview() {
         Intent viewOverview = new Intent(getApplicationContext(), MainActivity.class);
         viewOverview.putExtra("Uniqid", "From_diary");
 
@@ -118,11 +116,11 @@ public class EntryActivity extends AppCompatActivity {
         finish();
     }
 
-    public void goToCalculator(String back){
+    public void goToCalculator(String back) {
         Intent viewEdit = new Intent(getApplicationContext(), CalculatorActivity.class);
         viewEdit.putExtra("Uniqid", "From_diary");
         String index = entryArrayList.indexOf(diaryEntry) + "";
-        if (back.equals("edit")){
+        if (back.equals("edit")) {
             viewEdit.putExtra("edit", back);
         }
         viewEdit.putExtra("index", index);
@@ -152,14 +150,15 @@ public class EntryActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             public void run() {
                 sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("task list", null);
-        Type type = new TypeToken<ArrayList<DiaryEntry>>() {}.getType();
-        entryArrayList = gson.fromJson(json, type);
+                Gson gson = new Gson();
+                String json = sharedPreferences.getString("task list", null);
+                Type type = new TypeToken<ArrayList<DiaryEntry>>() {
+                }.getType();
+                entryArrayList = gson.fromJson(json, type);
 
-        if (entryArrayList == null) {
-            entryArrayList = new ArrayList<>();
-        }
+                if (entryArrayList == null) {
+                    entryArrayList = new ArrayList<>();
+                }
             }
         }).start();
     }

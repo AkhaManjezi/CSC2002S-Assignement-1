@@ -2,7 +2,7 @@ package com.example.assignment1;
 
 import java.util.Calendar;
 
-public class DiaryEntry  implements Comparable<DiaryEntry>{
+public class DiaryEntry implements Comparable<DiaryEntry> {
     private String breakfast;
     private String lunch;
     private String dinner;
@@ -12,7 +12,7 @@ public class DiaryEntry  implements Comparable<DiaryEntry>{
     private String mixed;
     private Calendar date;
 
-    public DiaryEntry(){
+    public DiaryEntry() {
         this.breakfast = "0";
         this.lunch = "0";
         this.dinner = "0";
@@ -24,7 +24,7 @@ public class DiaryEntry  implements Comparable<DiaryEntry>{
 
     }
 
-    public DiaryEntry(String breakfast, String lunch, String dinner, String snacks, String weightlifting, String cardio, String mixed, Calendar date){
+    public DiaryEntry(String breakfast, String lunch, String dinner, String snacks, String weightlifting, String cardio, String mixed, Calendar date) {
         this.breakfast = breakfast;
         this.lunch = lunch;
         this.dinner = dinner;
@@ -36,31 +36,31 @@ public class DiaryEntry  implements Comparable<DiaryEntry>{
     }
 
     public void setBreakfast(String breakfast) {
-        this.breakfast = (breakfast.length()>1 && breakfast.startsWith("0")) ? breakfast.substring(1) : breakfast;
+        this.breakfast = (breakfast.length() > 1 && breakfast.startsWith("0")) ? breakfast.substring(1) : breakfast;
     }
 
     public void setLunch(String lunch) {
-        this.lunch = (lunch.length()>1 && lunch.startsWith("0")) ? lunch.substring(1) : lunch;
+        this.lunch = (lunch.length() > 1 && lunch.startsWith("0")) ? lunch.substring(1) : lunch;
     }
 
     public void setDinner(String dinner) {
-        this.dinner = (dinner.length()>1 && dinner.startsWith("0")) ? dinner.substring(1) : dinner;
+        this.dinner = (dinner.length() > 1 && dinner.startsWith("0")) ? dinner.substring(1) : dinner;
     }
 
     public void setSnacks(String snacks) {
-        this.snacks = (snacks.length()>1 && snacks.startsWith("0")) ? snacks.substring(1) : snacks;
+        this.snacks = (snacks.length() > 1 && snacks.startsWith("0")) ? snacks.substring(1) : snacks;
     }
 
     public void setWeightlifting(String weightlifting) {
-        this.weightlifting = (weightlifting.length()>1 && weightlifting.startsWith("0")) ? weightlifting.substring(1) : weightlifting;
+        this.weightlifting = (weightlifting.length() > 1 && weightlifting.startsWith("0")) ? weightlifting.substring(1) : weightlifting;
     }
 
     public void setCardio(String cardio) {
-        this.cardio = (cardio.length()>1 && cardio.startsWith("0")) ? cardio.substring(1) : cardio;
+        this.cardio = (cardio.length() > 1 && cardio.startsWith("0")) ? cardio.substring(1) : cardio;
     }
 
     public void setMixed(String mixed) {
-        this.mixed = (mixed.length()>1 && mixed.startsWith("0")) ? mixed.substring(1) : mixed;
+        this.mixed = (mixed.length() > 1 && mixed.startsWith("0")) ? mixed.substring(1) : mixed;
     }
 
     public void setDate(Calendar date) {
@@ -112,7 +112,7 @@ public class DiaryEntry  implements Comparable<DiaryEntry>{
     }
 
     @Override
-    public int compareTo(DiaryEntry toCompare){
+    public int compareTo(DiaryEntry toCompare) {
         return toCompare.getDate().compareTo(this.getDate());
     }
 
