@@ -42,13 +42,14 @@ public class CalculatorActivity extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener mdateSetListener;
     Calendar currentDate;
     Intent intent;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculator);
-
         loadData();
+        setContentView(R.layout.activity_calculator);
 
          breakfastInput = findViewById(R.id.breakfastTextInput);
          lunchInput = findViewById(R.id.lunchTextInput);
@@ -206,8 +207,7 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         Collections.sort(entryArrayList);
         String json = gson.toJson(entryArrayList);
@@ -216,7 +216,9 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        new Thread(new Runnable() {
+            public void run() {
+                sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("task list", null);
         Type type = new TypeToken<ArrayList<DiaryEntry>>() {}.getType();
@@ -225,6 +227,9 @@ public class CalculatorActivity extends AppCompatActivity {
         if (entryArrayList == null) {
             entryArrayList = new ArrayList<>();
         }
+                editor = sharedPreferences.edit();
+            }
+        }).start();
     }
 
     private void edit() {
