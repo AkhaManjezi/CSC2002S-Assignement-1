@@ -63,7 +63,7 @@ public class DiaryEntryAdapter extends RecyclerView.Adapter<DiaryEntryAdapter.Di
     public void onBindViewHolder(@NonNull DiaryEntryViewHolder holder, int position) {
         SimpleDateFormat formatter = new SimpleDateFormat("EEE d MMM yyyy");
         DiaryEntry currentEntry = diaryEntries.get(position);
-        holder.NKIView.setText(currentEntry.getNKI());
+        holder.NKIView.setText(currentEntry.getNKI() + " kJ");
         holder.dateView.setText(formatter.format(currentEntry.getDate().getTime()));
 
     }
