@@ -73,13 +73,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="@string/zeroText">
+                    android:layout_weight="3">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/breakfastTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="@string/kjText"
                         android:inputType="numberDecimal"
                         android:textSize="18sp" />
 
@@ -105,13 +105,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="@string/zeroText">
+                    android:layout_weight="3">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/lunchTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="@string/kjText"
                         android:inputType="numberDecimal"
                         android:textSize="18sp" />
 
@@ -137,13 +137,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="@string/zeroText">
+                    android:layout_weight="3">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/dinnerTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="@string/kjText"
                         android:inputType="numberDecimal"
                         android:textSize="18sp" />
 
@@ -169,13 +169,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="@string/zeroText">
+                    android:layout_weight="3">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/snacksTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="@string/kjText"
                         android:inputType="numberDecimal"
                         android:textSize="18sp" />
 
@@ -229,13 +229,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="@string/zeroText">
+                    android:layout_weight="3">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/weightliftingTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="@string/kjText"
                         android:inputType="number|numberDecimal"
                         android:textSize="18sp" />
 
@@ -260,13 +260,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="@string/zeroText">
+                    android:layout_weight="3">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/cardioTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="@string/kjText"
                         android:inputType="number|numberDecimal"
                         android:textSize="18sp" />
 
@@ -291,13 +291,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="@string/zeroText">
+                    android:layout_weight="3">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/mixedTextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="@string/kjText"
                         android:inputType="number|numberDecimal"
                         android:textSize="18sp" />
 
