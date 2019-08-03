@@ -135,14 +135,14 @@ public class EntryActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.lunchValueView)).setText(diaryEntry.getLunch());
         ((TextView) findViewById(R.id.dinnerValueView)).setText(diaryEntry.getDinner());
         ((TextView) findViewById(R.id.snacksValueView)).setText(diaryEntry.getSnacks());
-        ((TextView) findViewById(R.id.foodTotalValueView)).setText(diaryEntry.getFoodKJ());
+        ((TextView) findViewById(R.id.foodTotalValueView)).setText(diaryEntry.getFoodKJ() + " kJ");
         ((TextView) findViewById(R.id.weightliftingValueView)).setText(diaryEntry.getWeightlifting());
         ((TextView) findViewById(R.id.cardioValueView)).setText(diaryEntry.getCardio());
         ((TextView) findViewById(R.id.mixedValueView)).setText(diaryEntry.getMixed());
-        ((TextView) findViewById(R.id.exerciseTotalValueView)).setText(diaryEntry.getExerciseKJ());
+        ((TextView) findViewById(R.id.exerciseTotalValueView)).setText(diaryEntry.getExerciseKJ() + " kJ");
         ((TextView) findViewById(R.id.foodTotalNKIView)).setText(diaryEntry.getFoodKJ());
         ((TextView) findViewById(R.id.exerciseTotalNKIView)).setText(diaryEntry.getExerciseKJ());
-        ((TextView) findViewById(R.id.NKITotalView)).setText(diaryEntry.getNKI());
+        ((TextView) findViewById(R.id.NKITotalView)).setText(diaryEntry.getNKI() + " kJ");
 
     }
 
