@@ -207,12 +207,15 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private void saveData() {
-//        sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        new Thread(new Runnable() {
+            public void run() {
         Gson gson = new Gson();
         Collections.sort(entryArrayList);
         String json = gson.toJson(entryArrayList);
         editor.putString("task list", json);
         editor.apply();
+            }
+        }).start();
     }
 
     private void loadData() {
