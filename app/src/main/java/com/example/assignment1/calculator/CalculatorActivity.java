@@ -44,6 +44,8 @@ public class CalculatorActivity extends AppCompatActivity {
     Intent intent;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    TextView dateText;
+    SimpleDateFormat formatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +61,16 @@ public class CalculatorActivity extends AppCompatActivity {
         cardioInput = findViewById(R.id.cardioTextInput);
         mixedInput = findViewById(R.id.mixedTextInput);
 
-        final SimpleDateFormat formatter = new SimpleDateFormat("EEE d MMM yyyy");
 
         currentDate = Calendar.getInstance();
-        final TextView dateText = findViewById(R.id.dateText);
+        dateText = findViewById(R.id.dateText);
 
-        Button buttonSave = findViewById(R.id.saveButton);
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateEntry();
-                saveData();
-                currentIndex = entryArrayList.indexOf(newEntry);
-                goToDiary();
-            }
-        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        formatter = new SimpleDateFormat("EEE d MMM yyyy");
 
         intent = this.getIntent();
         if (intent.getExtras().getString("Uniqid").equals("From_diary")) {
@@ -87,7 +84,16 @@ public class CalculatorActivity extends AppCompatActivity {
             newEntry = new DiaryEntry();
             dateText.setText(formatter.format(currentDate.getTime()));
         }
-
+        Button buttonSave = findViewById(R.id.saveButton);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateEntry();
+                saveData();
+                currentIndex = entryArrayList.indexOf(newEntry);
+                goToDiary();
+            }
+        });
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -136,8 +142,6 @@ public class CalculatorActivity extends AppCompatActivity {
                 dateText.setText(formatter.format(currentDate.getTime()));
             }
         };
-
-
     }
 
     private void updateEntry() {
