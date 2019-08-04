@@ -39,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         buildRecyclerView();
+    }
 
-        ((TextView) findViewById(R.id.NKIAverageValue)).setText(NKIAverage());
-
-
+    @Override
+    protected void onStart() {
+        super.onStart();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(newCalculation);
             }
         });
+        ((TextView) findViewById(R.id.NKIAverageValue)).setText(NKIAverage());
     }
 
     private void loadData() {
