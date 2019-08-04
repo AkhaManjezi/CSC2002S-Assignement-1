@@ -26,6 +26,8 @@ public class EntryActivity extends AppCompatActivity {
     DiaryEntry diaryEntry;
     Intent intent;
     SharedPreferences sharedPreferences;
+    SimpleDateFormat formatter;
+    TextView dateText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +37,26 @@ public class EntryActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         intent = this.getIntent();
+        dateText = findViewById(R.id.dateText);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         if (intent.getExtras().getString("Uniqid").equals("From_calculator") || intent.getExtras().getString("Uniqid").equals("From_overview") || intent.getExtras().getString("Uniqid").equals("From_diary")) {
             diaryEntry = entryArrayList.get(Integer.parseInt(intent.getExtras().getString("index")));
         }
         displayData();
 
-        final SimpleDateFormat formatter = new SimpleDateFormat("EEE d MMM yyyy");
-        TextView dateText = findViewById(R.id.dateText);
+        formatter = new SimpleDateFormat("EEE d MMM yyyy");
+
         dateText.setText(formatter.format(diaryEntry.getDate().getTime()));
 
         if (intent.getExtras().getString("index").equals("0")) {
             Button prevButton = findViewById(R.id.previousButton);
             prevButton.setVisibility(View.INVISIBLE);
-        } else if (intent.getExtras().getString("index").equals((entryArrayList.size() - 1) + "")) {
+        }
+        if (intent.getExtras().getString("index").equals((entryArrayList.size() - 1) + "")) {
             Button nextButton = findViewById(R.id.nextButton);
             nextButton.setVisibility(View.INVISIBLE);
         }
@@ -98,7 +106,6 @@ public class EntryActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     @Override
