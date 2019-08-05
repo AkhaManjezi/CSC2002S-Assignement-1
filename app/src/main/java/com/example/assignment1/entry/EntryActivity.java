@@ -36,8 +36,17 @@ public class EntryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_entry);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         intent = this.getIntent();
         dateText = findViewById(R.id.dateText);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        super.onSupportNavigateUp();
+        goToOverview();
+        return true;
     }
 
     @Override

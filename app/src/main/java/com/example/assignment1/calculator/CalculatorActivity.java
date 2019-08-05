@@ -51,7 +51,9 @@ public class CalculatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadData();
-        setContentView(R.layout.activity_calculator);
+        setContentView(R.layout.content_calculator);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         breakfastInput = findViewById(R.id.breakfastTextInput);
         lunchInput = findViewById(R.id.lunchTextInput);
@@ -68,9 +70,25 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onSupportNavigateUp() {
+        super.onSupportNavigateUp();
+        if (intent.getExtras().getString("Uniqid").equals("From_overview")) {
+            goToOverview();
+        } else if (intent.getExtras().getString("Uniqid").equals("From_diary")) {
+            if (intent.getExtras().getString("edit").equals("back")) {
+                goToOverview();
+            } else if (intent.getExtras().getString("edit").equals("edit")) {
+                goToDiary();
+            }
+        }
+        return true;
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         formatter = new SimpleDateFormat("EEE d MMM yyyy");
+
 
         intent = this.getIntent();
         if (intent.getExtras().getString("Uniqid").equals("From_diary")) {
